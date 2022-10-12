@@ -22,10 +22,10 @@ Os requisitos de cadastros previstos são:
 -	Atendimento pedagógico
 -	Inativo
 
--	O usuário do sistema poderá alterar esta situação sempre que necessário.
--	Nota: o aluno deve armazenar a nota do processo seletivo de entrada (0 até 10)
--	Esta nota deve ser inserida no momento do cadastro do aluno.
--	Total de atendimentos pedagógicos realizados.
+O usuário do sistema poderá alterar esta situação sempre que necessário.
+2.	Nota: o aluno deve armazenar a nota do processo seletivo de entrada (0 até 10)
+Esta nota deve ser inserida no momento do cadastro do aluno.
+3.	Total de atendimentos pedagógicos realizados.
 -	Este item é um contador que inicia em zero. Sempre que um pedagogo realiza um atendimento este valor deve ser incrementado
 
 ##	RF02 - Atualização da Situação da matrícula de Aluno
@@ -82,7 +82,9 @@ O usuário deve escolher quais registros apresentar de acordo com as opções ab
 -	Full-Stack
 -	Todos
 
-##	RF09 - Relatório de Alunos com mais atendimentos pedagógicos: exibindo os campos código, nome e total de atendimentos pedagógicos de todos os alunos em ordem decrescente de número de atendimentos, ou seja, o primeiro aluno listado deve ser o de maior número de atendimento. 
+##	RF09 - Relatório de Alunos com mais atendimentos pedagógicos:
+exibindo os campos código, nome e total de atendimentos pedagógicos de todos os alunos em ordem decrescente de número de atendimentos, ou seja, o primeiro aluno listado deve ser o de maior número de atendimento. 
 
-##	RF10 - Pedagogos com mais atendimentos pedagógicos: exibindo os campos código, nome e total de atendimentos pedagógicos de todos os pedagogos em ordem decrescente de número de atendimentos, ou seja, o primeiro pedagogo listado deve ser o de maior número de atendimento. 
+##	RF10 - Pedagogos com mais atendimentos pedagógicos:
+exibindo os campos código, nome e total de atendimentos pedagógicos de todos os pedagogos em ordem decrescente de número de atendimentos, ou seja, o primeiro pedagogo listado deve ser o de maior número de atendimento. 
 
