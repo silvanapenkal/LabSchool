@@ -1,15 +1,15 @@
 # LabSchool
 Primeiro projeto realizado no curso DEVin[ilog]
 
-# REQUISITOS DA APLICAÇÃO
+## REQUISITOS DA APLICAÇÃO
 A aplicação que deverá ser realizada individualmente deve contemplar os seguintes requisitos:
 -	O sistema deverá ser desenvolvido em Java;
 -	O sistema deve seguir o Roteiro da Aplicação;
 -	Desenvolvimento das mensagens de saída, com espera da ação do usuário;
 -	Captura da interação do usuário via entrada padrão;
 -	O sistema deverá ser apresentado diretamente na linha de comando;
--	Gravação de um vídeo.
 
+## ROTEIRO DA APLICAÇÃO
 
 A escola de programação Lab School deseja automatizar todo o sistema de armazenamento de informações referentes aos alunos, funcionários (pedagogos) e professores. 
 O sistema deve conter os tipos de cadastros abaixo, cada um com suas características. 

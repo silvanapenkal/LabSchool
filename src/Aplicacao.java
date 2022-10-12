@@ -61,10 +61,10 @@ public class Aplicacao {
                 display.voltarParaMenu();
                 break;
             case ATENDIMENTO_PEDAGOGICO:
-                Long codigoAluno = display.solicitarCodigoAluno();
                 Long codigoPedagogo = display.solicitarCodigoPedagogo();
                 Boolean ehPedagogo = pedagogoRepository.atualizarAtendimentoPedagogico(codigoPedagogo);
                 if (ehPedagogo) {
+                    Long codigoAluno = display.solicitarCodigoAluno();
                     alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
                     alunoRepository.atualizarSituacaoAluno(codigoAluno, SituacaoMatriculaAluno.valueOf("ATENDIMENTO_PEDAGOGICO"));
                     alunoRepository.imprimirAlunosQtidadeAtendimentos();

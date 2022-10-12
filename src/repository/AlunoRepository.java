@@ -38,11 +38,6 @@ public class AlunoRepository  {
         }
     }
 
-//    public int quantidadeAlunos(){
-//        int qtdadeAlunos = alunos.size()+1;
-//        return qtdadeAlunos;
-//    }
-
     public void imprimirAlunos(){
         for (Aluno aluno: alunos) {
             System.out.printf("%-17s%-40s%-28s%-10s\n",aluno.getCodigo(),aluno.getNome(),
@@ -51,11 +46,16 @@ public class AlunoRepository  {
     }
 
     public void atualizarAtendimentoPedagogico(Long codigoAluno) {
+        Boolean ehAluno = false;
         for (Aluno aluno:alunos){
             if (aluno.getCodigo()==codigoAluno){
+                ehAluno = true;
                 int atendimento = aluno.getQtdadeAtendimentosPedagagicos();
                 aluno.setQtdadeAtendimentosPedagagicos(atendimento+1);
             }
+        }
+        if (!ehAluno) {
+            System.out.println("O atendimento não foi cadastrado porque não existe um aluno cadastrado com esse código.");
         }
     }
 
