@@ -39,12 +39,10 @@ Esta nota deve ser inserida no momento do cadastro do aluno.
 -	Graduação completa
 -	Mestrado
 -	Doutorado
-
 2.	Experiência em desenvolvimento:
 -	Front-End
 -	Back-End
 -	Full-Stack
-
 3.	Estado
 -	Ativo
 -	Inativo
