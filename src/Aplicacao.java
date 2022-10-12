@@ -27,9 +27,9 @@ public class Aplicacao {
             } catch (InputMismatchException e) {
                 display.exibirMensagem("O valor digitado não é válido.");
             } catch (DateTimeParseException e){
-                display.exibirMensagem("A data informada não é válida");
+                display.exibirMensagem("A data informada não é válida.");
             } catch (ArrayIndexOutOfBoundsException e){
-                display.exibirMensagem("A opção informaa é inválida");
+                display.exibirMensagem("A opção informada não é válida.");
             }
         }
     }
@@ -63,9 +63,12 @@ public class Aplicacao {
             case ATENDIMENTO_PEDAGOGICO:
                 Long codigoAluno = display.solicitarCodigoAluno();
                 Long codigoPedagogo = display.solicitarCodigoPedagogo();
-                alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
-                pedagogoRepository.atualizarAtendimentoPedagogico(codigoPedagogo);
-                alunoRepository.imprimirAlunosQtidadeAtendimentos();
+                Boolean ehPedagogo = pedagogoRepository.atualizarAtendimentoPedagogico(codigoPedagogo);
+                if (ehPedagogo) {
+                    alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
+                    alunoRepository.atualizarSituacaoAluno(codigoAluno, SituacaoMatriculaAluno.valueOf("ATENDIMENTO_PEDAGOGICO"));
+                    alunoRepository.imprimirAlunosQtidadeAtendimentos();
+                }
                 display.voltarParaMenu();
                 break;
             case RELATORIO_PESSOA:

@@ -1,5 +1,6 @@
 package repository;
 
+import exception.OpcaoInvalidaException;
 import model.Aluno;
 import model.Pedagogo;
 
@@ -21,18 +22,23 @@ public class PedagogoRepository {
 
     public void imprimirPedagogos() {
         for (Pedagogo pedagogo : pedagogos) {
-            System.out.printf("%-17s%-40s%-28s-%10s\n", pedagogo.getCodigo(), pedagogo.getNome(),
+            System.out.printf("%-17s%-40s%-28s-%7s\n", pedagogo.getCodigo(), pedagogo.getNome(),
                     pedagogo.getCPF(),"pedagogo");
         }
     }
 
-    public void atualizarAtendimentoPedagogico(Long codigoAluno) {
+    public Boolean atualizarAtendimentoPedagogico(Long codigoPedagogo) {
+        Boolean ehPedagogo = false;
         for (Pedagogo pedagogo : pedagogos) {
-            if (pedagogo.getCodigo() == codigoAluno) {
+            if (pedagogo.getCodigo() == codigoPedagogo) {
                 int atendimento = pedagogo.getQtdadeAtendimentosPedagagicos();
                 pedagogo.setQtdadeAtendimentosPedagagicos(atendimento + 1);
+                ehPedagogo = true;
             }
+        if (!ehPedagogo) {
+            System.out.println("O atendimento não foi cadastrado porque não existe um pedagogo cadastrado com esse código.");}
         }
+        return ehPedagogo;
     }
 
     public void imprimirRelatorioAtendimentos() {

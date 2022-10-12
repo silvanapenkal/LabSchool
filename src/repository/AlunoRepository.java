@@ -1,6 +1,7 @@
 package repository;
 
 import model.Aluno;
+import model.Comparator;
 import model.Operacao;
 import model.SituacaoMatriculaAluno;
 
@@ -8,16 +9,16 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class AlunoRepository {
+public class AlunoRepository  {
     private List<Aluno> alunos = new ArrayList<>();
 
     public void inserir(Aluno aluno) {
         this.alunos.add(aluno);
     }
 
-    public List<Aluno> consultar() {
-        return alunos;
-    }
+//    public List<Aluno> consultar() {
+//        return alunos;
+//    }
 
 
     public void imprimirRelatorio(SituacaoMatriculaAluno situacaoMatricula){
@@ -37,10 +38,10 @@ public class AlunoRepository {
         }
     }
 
-    public int quantidadeAlunos(){
-        int qtdadeAlunos = alunos.size()+1;
-        return qtdadeAlunos;
-    }
+//    public int quantidadeAlunos(){
+//        int qtdadeAlunos = alunos.size()+1;
+//        return qtdadeAlunos;
+//    }
 
     public void imprimirAlunos(){
         for (Aluno aluno: alunos) {
@@ -67,8 +68,9 @@ public class AlunoRepository {
     }
 
     public void imprimirAlunosQtidadeAtendimentos() {
-        Collections.sort(alunos);
-        for(Aluno aluno: alunos){
+        List<Aluno> alunosPorQtidadeAtendimento = new ArrayList<>(alunos);
+        Collections.sort(alunosPorQtidadeAtendimento);
+        for(Aluno aluno: alunosPorQtidadeAtendimento){
             System.out.println(aluno);
         }
     }
@@ -78,10 +80,16 @@ public class AlunoRepository {
                 "ATENDIMENTOS PEDAGÓGICOS");
         System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
                 ,"------------------------");
-        for (Aluno aluno:alunos) {
+        List<Aluno> alunosPorQtidadeAtendimento = new ArrayList<>(alunos);
+        Collections.sort(alunosPorQtidadeAtendimento);
+        for (Aluno aluno:alunosPorQtidadeAtendimento) {
             System.out.printf("%-17s%-40s%-24d\n",aluno.getCodigo(),aluno.getNome(),
                         aluno.getQtdadeAtendimentosPedagagicos());
         }
     }
-
+//
+//    @Override
+//    public int compare(int atendimentosPedagogicos1, int atendimentosPedagogicos2) {
+////        return 0;
+//    }
 }

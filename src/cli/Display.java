@@ -136,7 +136,7 @@ public class Display {
         System.out.print("Digite a opção desejada: ");
         Scanner scanner = new Scanner(System.in);
         int codigoOpcao = scanner.nextInt();
-        if (codigoOpcao < 0 || codigoOpcao >= ExperienciaProfessor.values().length) {
+        if (codigoOpcao <= 0 || codigoOpcao > ExperienciaProfessor.values().length+1) {
             throw new OpcaoInvalidaException();
         }
         ExperienciaProfessor experienciaProfessor = null;
@@ -184,10 +184,10 @@ public class Display {
         System.out.print("Informe o nome: ");
         String nome = scanner.nextLine();
         System.out.println();
-        System.out.print("Informe o CPF: ");
+        System.out.print("Informe o CPF (digite apenas os números): ");
         Long CPF = scanner.nextLong();
         System.out.println();
-        System.out.print("Informe o Telefone: ");
+        System.out.print("Informe o Telefone (digite apenas os números): ");
         Long telefone = scanner.nextLong();
         System.out.println();
         System.out.print("Data de Nascimento(formato = dd/MM/yyyy): ");

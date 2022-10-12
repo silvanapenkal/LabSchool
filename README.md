@@ -1,6 +1,16 @@
 # LabSchool
 Primeiro projeto realizado no curso DEVin[ilog]
 
+# REQUISITOS DA APLICAÇÃO
+A aplicação que deverá ser realizada individualmente deve contemplar os seguintes requisitos:
+-	O sistema deverá ser desenvolvido em Java;
+-	O sistema deve seguir o Roteiro da Aplicação;
+-	Desenvolvimento das mensagens de saída, com espera da ação do usuário;
+-	Captura da interação do usuário via entrada padrão;
+-	O sistema deverá ser apresentado diretamente na linha de comando;
+-	Gravação de um vídeo.
+
+
 A escola de programação Lab School deseja automatizar todo o sistema de armazenamento de informações referentes aos alunos, funcionários (pedagogos) e professores. 
 O sistema deve conter os tipos de cadastros abaixo, cada um com suas características. 
 Todos os cadastros devem ser derivados da classe “Pessoa”, que possui os seguintes atributos:
@@ -23,8 +33,10 @@ Os requisitos de cadastros previstos são:
 -	Inativo
 
 O usuário do sistema poderá alterar esta situação sempre que necessário.
+
 2.	Nota: o aluno deve armazenar a nota do processo seletivo de entrada (0 até 10)
-Esta nota deve ser inserida no momento do cadastro do aluno.
+-       Esta nota deve ser inserida no momento do cadastro do aluno.
+
 3.	Total de atendimentos pedagógicos realizados.
 -	Este item é um contador que inicia em zero. Sempre que um pedagogo realiza um atendimento este valor deve ser incrementado
 

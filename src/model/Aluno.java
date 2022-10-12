@@ -16,8 +16,6 @@ public class Aluno extends Pessoa implements Comparable<Aluno>{
         this.qtdadeAtendimentosPedagagicos = qtdadeAtendimentosPedagagicos;
     }
 
-
-
     @Override
     public int compareTo(Aluno o) {
         if (this.qtdadeAtendimentosPedagagicos > o.qtdadeAtendimentosPedagagicos) {
