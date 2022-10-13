@@ -16,7 +16,7 @@ public class PedagogoRepository {
 
     public void imprimirPedagogos() {
         for (Pedagogo pedagogo : pedagogos) {
-            System.out.printf("%-17s%-40s%-28s-%7s\n", pedagogo.getCodigo(), pedagogo.getNome(),
+            System.out.printf("%-17s%-40s%-28s%-10s\n", pedagogo.getCodigo(), pedagogo.getNome(),
                     pedagogo.getCPF(),"pedagogo");
         }
     }
@@ -28,21 +28,22 @@ public class PedagogoRepository {
                 int atendimento = pedagogo.getQtdadeAtendimentosPedagagicos();
                 pedagogo.setQtdadeAtendimentosPedagagicos(atendimento + 1);
                 ehPedagogo = true;
-                System.out.println("Nome do Pedagogo: "+pedagogo.getNome());
+                System.out.println("Nome do Pedagogo: " + pedagogo.getNome());
             }
+        }
         if (!ehPedagogo) {
-            System.out.println("O atendimento não foi cadastrado porque não existe um pedagogo cadastrado com esse código.");}
+            System.out.println("O atendimento não foi cadastrado porque não existe um pedagogo cadastrado com esse código.");
         }
         return ehPedagogo;
     }
 
     public void imprimirRelatorioAtendimentos() {
-        Collections.sort(pedagogos);
         System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO PEDAGOGO","NOME DO PEDAGOGO",
                 "ATENDIMENTOS PEDAGÓGICOS");
         System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
                 ,"------------------------");
         List<Pedagogo> pedagogosPorQtidadeAtendimento = new ArrayList<>(pedagogos);
+        Collections.sort(pedagogosPorQtidadeAtendimento);
         for (Pedagogo pedagogo:pedagogosPorQtidadeAtendimento) {
             System.out.printf("%-17s%-40s%-24d\n",pedagogo.getCodigo(),pedagogo.getNome(),
                     pedagogo.getQtdadeAtendimentosPedagagicos());

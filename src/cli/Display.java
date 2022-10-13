@@ -26,12 +26,13 @@ public class Display {
         //Georgia 11 by Richard Sabey <cryptic_fan@hotmail.com> 9.2003
         //obtida no site https://patorjk.com/software/taag/
         System.out.println("Seja bem-vindo ao melhor sistema de gestão escolar do DEVinHouse!");
+        System.out.println("Desenvolvido por Silvana Penkal Santos");
     }
 
 
     public void exibirMenu() {
         System.out.println();
-        System.out.println("== MENU ==");
+        System.out.println("=== MENU PRINCIPAL ===");
         System.out.println(" 1 - Cadastrar - Aluno");
         System.out.println(" 2 - Cadastrar - Professor");
         System.out.println(" 3 - Cadastrar - Pedagogo");
@@ -182,7 +183,7 @@ public class Display {
 
     public void voltarParaMenu (){
         System.out.println();
-        System.out.println("Digite ENTER para exibir o Menu.");
+        System.out.println("Digite ENTER para exibir o Menu Principal.");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
@@ -202,24 +203,13 @@ public class Display {
         while (nome==""){
             System.out.print("Informe o nome: ");
             nome = scanner.nextLine();
-            System.out.println(nome);
         }
         System.out.println();
         System.out.print("Informe o CPF (digite apenas os números): ");
         Long CPF = scanner.nextLong();
-//        Long CPF = null;
-//        while (CPF==null){
-//            System.out.print("Informe o CPF (digite apenas os números): ");
-//            CPF = scanner.nextLong();
-//        }
         System.out.println();
         System.out.print("Informe o Telefone (digite apenas os números): ");
         Long telefone = scanner.nextLong();
-//        Long telefone = null;
-//        while (telefone==null){
-//            System.out.print("Informe o Telefone (digite apenas os números): ");
-//            telefone = scanner.nextLong();
-//        }
         System.out.println();
         System.out.print("Data de Nascimento(formato = dd/MM/yyyy): ");
         Scanner scan = new Scanner(System.in);

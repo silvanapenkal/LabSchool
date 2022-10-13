@@ -68,7 +68,6 @@ public class Aplicacao {
                     Long codigoAluno = display.solicitarCodigoAluno();
                     alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
                     alunoRepository.atualizarSituacaoAluno(codigoAluno, SituacaoMatriculaAluno.valueOf("ATENDIMENTO_PEDAGOGICO"));
-                    alunoRepository.imprimirAlunosQtidadeAtendimentos();
                 }
                 display.voltarParaMenu();
                 break;

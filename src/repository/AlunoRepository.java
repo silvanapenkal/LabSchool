@@ -58,15 +58,8 @@ public class AlunoRepository  {
         for (Aluno aluno:alunos){
             if (aluno.getCodigo()==codigoAluno){
                 aluno.setSituacaoMatricula(situacaoMatricula);
+                System.out.println("A situação do aluno "+aluno.getNome()+" foi alterada para "+aluno.getSituacaoMatricula());
             }
-        }
-    }
-
-    public void imprimirAlunosQtidadeAtendimentos() {
-        List<Aluno> alunosPorQtidadeAtendimento = new ArrayList<>(alunos);
-        Collections.sort(alunosPorQtidadeAtendimento);
-        for(Aluno aluno: alunosPorQtidadeAtendimento){
-            System.out.println(aluno);
         }
     }
 
