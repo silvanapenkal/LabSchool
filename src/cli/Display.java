@@ -11,6 +11,23 @@ public class Display {
 
     private GeradorDeCodigo geradorDeCodigo = new GeradorDeCodigo();
 
+    public void exibirApresentacao(){
+        System.out.println("******************************************************************************************");
+        System.out.println("                     ,,                               ,,                           ,,  ");
+        System.out.println("`7MMF'              *MM             .M\"\"\"bgd        `7MM                         `7MM  ");
+        System.out.println("  MM                 MM            ,MI    \"Y          MM                           MM  ");
+        System.out.println("  MM         ,6\"Yb.  MM,dMMb.      `MMb.      ,p6\"bo  MMpMMMb.  ,pW\"Wq.   ,pW\"Wq.  MM  ");
+        System.out.println("  MM        8)   MM  MM    `Mb       `YMMNq. 6M'  OO  MM    MM 6W'   `Wb 6W'   `Wb MM  ");
+        System.out.println("  MM      ,  ,pm9MM  MM     M8     .     `MM 8M       MM    MM 8M     M8 8M     M8 MM  ");
+        System.out.println("  MM     ,M 8M   MM  MM.   ,M9     Mb     dM YM.    , MM    MM YA.   ,A9 YA.   ,A9 MM  ");
+        System.out.println(".JMMmmmmMMM `Moo9^Yo.P^YbmdP'      P\"Ybmmd\"   YMbmd'.JMML  JMML.`Ybmd9'   `Ybmd9'.JMML.");
+        System.out.println("******************************************************************************************");
+        System.out.println();
+        //Georgia 11 by Richard Sabey <cryptic_fan@hotmail.com> 9.2003
+        //obtida no site https://patorjk.com/software/taag/
+        System.out.println("Seja bem-vindo ao melhor sistema de gestão escolar do DEVinHouse!");
+    }
+
 
     public void exibirMenu() {
         System.out.println();
@@ -165,7 +182,7 @@ public class Display {
 
     public void voltarParaMenu (){
         System.out.println();
-        System.out.println("Digite ENTER para voltar para o Menu.");
+        System.out.println("Digite ENTER para exibir o Menu.");
         Scanner scanner = new Scanner(System.in);
         scanner.nextLine();
     }
@@ -180,15 +197,29 @@ public class Display {
 
     public Pessoa cadastrar (Operacao operacao) {
         Scanner scanner = new Scanner(System.in);
+        String nome = "";
         System.out.println();
-        System.out.print("Informe o nome: ");
-        String nome = scanner.nextLine();
+        while (nome==""){
+            System.out.print("Informe o nome: ");
+            nome = scanner.nextLine();
+            System.out.println(nome);
+        }
         System.out.println();
         System.out.print("Informe o CPF (digite apenas os números): ");
         Long CPF = scanner.nextLong();
+//        Long CPF = null;
+//        while (CPF==null){
+//            System.out.print("Informe o CPF (digite apenas os números): ");
+//            CPF = scanner.nextLong();
+//        }
         System.out.println();
         System.out.print("Informe o Telefone (digite apenas os números): ");
         Long telefone = scanner.nextLong();
+//        Long telefone = null;
+//        while (telefone==null){
+//            System.out.print("Informe o Telefone (digite apenas os números): ");
+//            telefone = scanner.nextLong();
+//        }
         System.out.println();
         System.out.print("Data de Nascimento(formato = dd/MM/yyyy): ");
         Scanner scan = new Scanner(System.in);

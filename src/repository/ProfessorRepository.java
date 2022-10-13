@@ -14,10 +14,6 @@ public class ProfessorRepository {
         this.professores.add(professor);
     }
 
-    public List<Professor> consultar() {
-        return professores;
-    }
-
     public void imprimirRelatorio(ExperienciaProfessor experienciaProfessor){
         System.out.printf("%-22s%-40s%-21s%-14s%-10s\n","CÓDIGO DO PROFESSOR","NOME DO PROFESSOR",
                 "FORMAÇÃO ACADÊMICA","EXPERIÊNCIA","SITUAÇÃO");

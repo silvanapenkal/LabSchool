@@ -1,7 +1,5 @@
 package repository;
 
-import exception.OpcaoInvalidaException;
-import model.Aluno;
 import model.Pedagogo;
 
 import java.util.ArrayList;
@@ -14,10 +12,6 @@ public class PedagogoRepository {
 
     public void inserir(Pedagogo pedagogo) {
         this.pedagogos.add(pedagogo);
-    }
-
-    public List<Pedagogo> consultar() {
-        return pedagogos;
     }
 
     public void imprimirPedagogos() {
@@ -34,6 +28,7 @@ public class PedagogoRepository {
                 int atendimento = pedagogo.getQtdadeAtendimentosPedagagicos();
                 pedagogo.setQtdadeAtendimentosPedagagicos(atendimento + 1);
                 ehPedagogo = true;
+                System.out.println("Nome do Pedagogo: "+pedagogo.getNome());
             }
         if (!ehPedagogo) {
             System.out.println("O atendimento não foi cadastrado porque não existe um pedagogo cadastrado com esse código.");}
@@ -47,10 +42,10 @@ public class PedagogoRepository {
                 "ATENDIMENTOS PEDAGÓGICOS");
         System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
                 ,"------------------------");
-        for (Pedagogo pedagogo:pedagogos) {
+        List<Pedagogo> pedagogosPorQtidadeAtendimento = new ArrayList<>(pedagogos);
+        for (Pedagogo pedagogo:pedagogosPorQtidadeAtendimento) {
             System.out.printf("%-17s%-40s%-24d\n",pedagogo.getCodigo(),pedagogo.getNome(),
                     pedagogo.getQtdadeAtendimentosPedagagicos());
-
         }
     }
 }

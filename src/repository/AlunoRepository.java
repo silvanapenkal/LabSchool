@@ -1,8 +1,6 @@
 package repository;
 
 import model.Aluno;
-import model.Comparator;
-import model.Operacao;
 import model.SituacaoMatriculaAluno;
 
 import java.util.ArrayList;
@@ -15,11 +13,6 @@ public class AlunoRepository  {
     public void inserir(Aluno aluno) {
         this.alunos.add(aluno);
     }
-
-//    public List<Aluno> consultar() {
-//        return alunos;
-//    }
-
 
     public void imprimirRelatorio(SituacaoMatriculaAluno situacaoMatricula){
         System.out.printf("%-17s%-40s%-28s%-24s\n","CÓDIGO DO ALUNO","NOME DO ALUNO",
@@ -52,6 +45,8 @@ public class AlunoRepository  {
                 ehAluno = true;
                 int atendimento = aluno.getQtdadeAtendimentosPedagagicos();
                 aluno.setQtdadeAtendimentosPedagagicos(atendimento+1);
+                System.out.println("Nome do Aluno: "+aluno.getNome());
+                System.out.println("O cadastro do atendimento pedagógico foi realizado com sucesso!");
             }
         }
         if (!ehAluno) {
@@ -87,9 +82,4 @@ public class AlunoRepository  {
                         aluno.getQtdadeAtendimentosPedagagicos());
         }
     }
-//
-//    @Override
-//    public int compare(int atendimentosPedagogicos1, int atendimentosPedagogicos2) {
-////        return 0;
-//    }
 }

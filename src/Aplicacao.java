@@ -16,7 +16,8 @@ public class Aplicacao {
 
     public void iniciar() {
         Operacao operacao = null;
-        System.out.println("Hello World!");
+        display.exibirApresentacao();
+        display.voltarParaMenu ();
         while (operacao != Operacao.SAIR) {
             display.exibirMenu();
             try {
