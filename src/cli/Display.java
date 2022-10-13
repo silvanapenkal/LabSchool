@@ -225,8 +225,11 @@ public class Display {
             int situacao = scan.nextInt();
             SituacaoMatriculaAluno situacaoMatricula = SituacaoMatriculaAluno.obterPeloCodigo(situacao);
             System.out.println();
-            System.out.print("Informe a Nota do Processo Seletivo: ");
-            Double nota = scan.nextDouble();
+            Double nota=11d; // Como não aceita null coloquei um valor acima de 10 para entrar no while
+            while (nota<0 || nota>10){
+                System.out.print("Informe a Nota do Processo Seletivo: ");
+                nota = scan.nextDouble();
+            }
             System.out.println();
             pessoa = new Aluno(nome, CPF, telefone, codigo, dataNascimento,
                     situacaoMatricula, nota, qtdadeAtendimentoPedagogico);
@@ -236,7 +239,7 @@ public class Display {
             FormacaoAcademicaProfessor formacaoAcademicaProfessor = FormacaoAcademicaProfessor.obterPeloCodigo(formacao);
             exibirMenuSituacaoProfessor();
             int situacao = scan.nextInt();
-            SituacaoProfessor situacaoProfessor = SituacaoProfessor.obterPeloCodigo(situacao);
+            EstadoProfessor situacaoProfessor = EstadoProfessor.obterPeloCodigo(situacao);
             exibirMenuExperienciaProfessor ();
             int experiencia = scan.nextInt();
             ExperienciaProfessor experienciaProfessor = ExperienciaProfessor.obterPeloCodigo(experiencia);

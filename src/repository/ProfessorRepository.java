@@ -16,18 +16,18 @@ public class ProfessorRepository {
 
     public void imprimirRelatorio(ExperienciaProfessor experienciaProfessor){
         System.out.printf("%-22s%-40s%-21s%-14s%-10s\n","CÓDIGO DO PROFESSOR","NOME DO PROFESSOR",
-                "FORMAÇÃO ACADÊMICA","EXPERIÊNCIA","SITUAÇÃO");
+                "FORMAÇÃO ACADÊMICA","EXPERIÊNCIA","ESTADO");
         System.out.printf("%-22s%-40s%-21s%-14s%-10s\n","-------------------","--------------------------------------",
-                "------------------","-----------","---------");
+                "------------------","-----------","------");
         for (Professor professor: professores) {
             if (experienciaProfessor == null){
                 System.out.printf("%-22s%-40s%-21s%-14s%-10s\n",professor.getCodigo(),professor.getNome(),
                         professor.getFormacaoAcademicaProfessor(),
-                        professor.getExperienciaProfessor(),professor.getSituacaoProfessor());
+                        professor.getExperienciaProfessor(),professor.getEstadoProfessor());
             } else if (professor.getExperienciaProfessor()==experienciaProfessor) {
                 System.out.printf("%-22s%-40s%-21s%-14s%-10s\n",professor.getCodigo(),professor.getNome(),
                         professor.getFormacaoAcademicaProfessor(),
-                        professor.getExperienciaProfessor(),professor.getSituacaoProfessor());
+                        professor.getExperienciaProfessor(),professor.getEstadoProfessor());
             }
         }
     }
