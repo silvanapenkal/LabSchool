@@ -45,8 +45,9 @@ Os requisitos de cadastros previstos são:
 
 O usuário do sistema poderá alterar esta situação sempre que necessário.
 
-2.	Nota: o aluno deve armazenar a nota do processo seletivo de entrada (0 até 10)
--       Esta nota deve ser inserida no momento do cadastro do aluno.
+2.	O aluno deve armazenar a nota do processo seletivo de entrada (0 até 10)
+- 	Esta nota deve ser inserida no momento do cadastro do aluno.
+
 
 3.	Total de atendimentos pedagógicos realizados.
 -	Este item é um contador que inicia em zero. Sempre que um pedagogo realiza um atendimento este valor deve ser incrementado

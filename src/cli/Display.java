@@ -7,6 +7,7 @@ import util.GeradorDeCodigo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+
 import java.util.Scanner;
 
 public class Display {
@@ -30,7 +31,6 @@ public class Display {
         System.out.println("Seja bem-vindo ao melhor sistema de gestão escolar do DEVinHouse!");
         System.out.println("Desenvolvido por Silvana Penkal Santos");
     }
-
 
     public void exibirMenu() {
         System.out.println();

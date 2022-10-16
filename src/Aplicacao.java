@@ -65,13 +65,13 @@ public class Aplicacao {
                 display.voltarParaMenu();
                 break;
             case ATENDIMENTO_PEDAGOGICO:
-                System.out.println("Relação dos pedagogos");
-                pedagogoRepository.imprimirPedagogos();
+                System.out.println("Relação de códigos dos pedagogos:");
+                pedagogoRepository.imprimirCodigosPedagogos();
                 Long codigoPedagogo = display.solicitarCodigoPedagogo();
                 Boolean ehPedagogo = pedagogoRepository.atualizarAtendimentoPedagogico(codigoPedagogo);
                 if (ehPedagogo) {
-                    System.out.println("Relação dos alunos");
-                    alunoRepository.imprimirAlunos();
+                    System.out.println("Relação de códigos dos alunos");
+                    alunoRepository.imprimirCodigosAlunos();
                     Long codigoAluno = display.solicitarCodigoAluno();
                     alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
                     alunoRepository.atualizarSituacaoAluno(codigoAluno, SituacaoMatriculaAluno.valueOf("ATENDIMENTO_PEDAGOGICO"));
