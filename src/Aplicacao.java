@@ -57,7 +57,7 @@ public class Aplicacao {
                 break;
             case ATUALIZAR_ALUNO:
                 System.out.println("Relação dos alunos");
-                System.out.printf("%-17s%-40s\n","Código","Nome");
+                System.out.printf("%-17s%-40s%-11s   %-23s\n","Código","Nome", "CPF", "Função");
                 alunoRepository.imprimirAlunos();
                 Long codigoAlunoParaAtualizar = display.pedirCodigoAluno();
                 SituacaoMatriculaAluno situacaoAluno = display.atualizarSituacaoAluno();

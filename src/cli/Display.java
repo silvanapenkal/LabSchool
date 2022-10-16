@@ -2,9 +2,7 @@ package cli;
 
 import exception.OpcaoInvalidaException;
 import model.*;
-import repository.AlunoRepository;
-import repository.PedagogoRepository;
-import repository.ProfessorRepository;
+
 import util.GeradorDeCodigo;
 
 import java.time.LocalDate;
@@ -295,7 +293,7 @@ public class Display {
         Boolean validadeTelefone = false;
         Long telefone =0000l;
         while (!validadeTelefone) {
-            System.out.print("Informe o Telefone (digite apenas os números com o prefixo: ");
+            System.out.println("Informe o Telefone (digite apenas os números com o prefixo): ");
             System.out.println("Exemplo: se seu número é (47) 99000-9999, digite 47990009999");
             String entradaTelefone = scanner.nextLine();
             int caracteresTelefone = entradaTelefone.length();
