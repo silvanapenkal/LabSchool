@@ -1,6 +1,17 @@
 # LabSchool
 Primeiro projeto realizado no curso DEVin[ilog]
 
+##  VÍDEO
+
+https://youtu.be/spVLYJBHkdo
+
+Neste vídeo eu conto:
+-	Como foi a minha experiência desenvolvendo o sistema para o Lab School?
+-	Qual foi a minha maior dificuldade?
+-	Você acha que faltou algo no meu código que você poderia melhorar?
+-	Como está sendo minha experiência no DEVinHouse?
+
+
 ## REQUISITOS DA APLICAÇÃO
 A aplicação que deverá ser realizada individualmente deve contemplar os seguintes requisitos:
 -	O sistema deverá ser desenvolvido em Java;
