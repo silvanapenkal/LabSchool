@@ -195,9 +195,9 @@ public class Display {
     }
 
     public void exibirCabecalhoAtendimentoPedagogo(){
-        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO PEDAGOGO","NOME DO PEDAGOGO",
+        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO","NOME DO PEDAGOGO",
                 "ATENDIMENTOS PEDAGÓGICOS");
-        System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
+        System.out.printf("%-17s%-40s%-24s\n","------","--------------------------------------"
                 ,"------------------------");
     }
 
