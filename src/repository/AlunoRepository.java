@@ -1,5 +1,6 @@
 package repository;
 
+import cli.Display;
 import model.Aluno;
 import model.SituacaoMatriculaAluno;
 
@@ -9,16 +10,14 @@ import java.util.List;
 
 public class AlunoRepository  {
     private List<Aluno> alunos = new ArrayList<>();
+    private Display display = new Display();
 
     public void inserir(Aluno aluno) {
         this.alunos.add(aluno);
     }
 
     public void imprimirRelatorio(SituacaoMatriculaAluno situacaoMatricula){
-        System.out.printf("%-17s%-40s%-28s%-24s\n","CÓDIGO DO ALUNO","NOME DO ALUNO",
-                "NOTA DO PROCESSO SELETIVO","ATENDIMENTOS PEDAGÓGICOS");
-        System.out.printf("%-17s%-40s%-28s%-24s\n","---------------","--------------------------------------",
-                "--------------------------","------------------------");
+        display.exibirCabecalhoRelatorioAluno();
         for (Aluno aluno:alunos) {
             if (situacaoMatricula == null){
                 System.out.printf("%-17s%-40s%-28s%-24d\n",aluno.getCodigo(),aluno.getNome(),
@@ -31,10 +30,18 @@ public class AlunoRepository  {
         }
     }
 
+
+
     public void imprimirAlunos(){
         for (Aluno aluno: alunos) {
-            System.out.printf("%-17s%-40s%-28s%-10s\n",aluno.getCodigo(),aluno.getNome(),
+            System.out.printf("%-17s%-40s%011d   %-23s\n",aluno.getCodigo(),aluno.getNome(),
                     aluno.getCPF(), "aluno");
+        }
+    }
+
+    public void imprimirCodigosAlunos(){
+        for (Aluno aluno: alunos) {
+            System.out.printf("%-17s%-40s\n",aluno.getCodigo(),aluno.getNome());
         }
     }
 
@@ -54,20 +61,23 @@ public class AlunoRepository  {
         }
     }
 
+
     public void atualizarSituacaoAluno(Long codigoAluno, SituacaoMatriculaAluno situacaoMatricula) {
+        Boolean ehAluno = false;
         for (Aluno aluno:alunos){
             if (aluno.getCodigo()==codigoAluno){
+                ehAluno = true;
                 aluno.setSituacaoMatricula(situacaoMatricula);
                 System.out.println("A situação do aluno "+aluno.getNome()+" foi alterada para "+aluno.getSituacaoMatricula());
             }
         }
+        if (!ehAluno) {
+            System.out.println("Não existe um aluno cadastrado com esse código.");
+        }
     }
 
     public void imprimirRelatorioAtendimentos(){
-        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO ALUNO","NOME DO ALUNO",
-                "ATENDIMENTOS PEDAGÓGICOS");
-        System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
-                ,"------------------------");
+        display.exibirCabecalhoAtendimentoAluno();
         List<Aluno> alunosPorQtidadeAtendimento = new ArrayList<>(alunos);
         Collections.sort(alunosPorQtidadeAtendimento);
         for (Aluno aluno:alunosPorQtidadeAtendimento) {

@@ -56,15 +56,22 @@ public class Aplicacao {
                 display.voltarParaMenu();
                 break;
             case ATUALIZAR_ALUNO:
+                System.out.println("Relação dos alunos");
+                System.out.printf("%-17s%-40s\n","Código","Nome");
+                alunoRepository.imprimirAlunos();
                 Long codigoAlunoParaAtualizar = display.pedirCodigoAluno();
                 SituacaoMatriculaAluno situacaoAluno = display.atualizarSituacaoAluno();
                 alunoRepository.atualizarSituacaoAluno(codigoAlunoParaAtualizar, situacaoAluno);
                 display.voltarParaMenu();
                 break;
             case ATENDIMENTO_PEDAGOGICO:
+                System.out.println("Relação dos pedagogos");
+                pedagogoRepository.imprimirPedagogos();
                 Long codigoPedagogo = display.solicitarCodigoPedagogo();
                 Boolean ehPedagogo = pedagogoRepository.atualizarAtendimentoPedagogico(codigoPedagogo);
                 if (ehPedagogo) {
+                    System.out.println("Relação dos alunos");
+                    alunoRepository.imprimirAlunos();
                     Long codigoAluno = display.solicitarCodigoAluno();
                     alunoRepository.atualizarAtendimentoPedagogico(codigoAluno);
                     alunoRepository.atualizarSituacaoAluno(codigoAluno, SituacaoMatriculaAluno.valueOf("ATENDIMENTO_PEDAGOGICO"));

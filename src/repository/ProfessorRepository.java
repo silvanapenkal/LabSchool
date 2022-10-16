@@ -34,7 +34,7 @@ public class ProfessorRepository {
 
     public void imprimirProfessores(){
         for (Professor professor: professores) {
-                System.out.printf("%-17s%-40s%-28s%-10s\n",professor.getCodigo(),professor.getNome(),
+                System.out.printf("%-17s%-40s%011d   %-23s\n",professor.getCodigo(),professor.getNome(),
                         professor.getCPF(), "professor");
         }
     }

@@ -1,5 +1,6 @@
 package repository;
 
+import cli.Display;
 import model.Pedagogo;
 
 import java.util.ArrayList;
@@ -9,6 +10,7 @@ import java.util.List;
 public class PedagogoRepository {
 
     private List<Pedagogo> pedagogos = new ArrayList<>();
+    private Display display = new Display();
 
     public void inserir(Pedagogo pedagogo) {
         this.pedagogos.add(pedagogo);
@@ -16,8 +18,14 @@ public class PedagogoRepository {
 
     public void imprimirPedagogos() {
         for (Pedagogo pedagogo : pedagogos) {
-            System.out.printf("%-17s%-40s%-28s%-10s\n", pedagogo.getCodigo(), pedagogo.getNome(),
+            System.out.printf("%-17s%-40s%011d   %-23s\n", pedagogo.getCodigo(), pedagogo.getNome(),
                     pedagogo.getCPF(),"pedagogo");
+        }
+    }
+
+    public void imprimirCodigosPedagogos() {
+        for (Pedagogo pedagogo : pedagogos) {
+            System.out.printf("%-17s%-40s\n", pedagogo.getCodigo(), pedagogo.getNome());
         }
     }
 
@@ -38,10 +46,7 @@ public class PedagogoRepository {
     }
 
     public void imprimirRelatorioAtendimentos() {
-        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO PEDAGOGO","NOME DO PEDAGOGO",
-                "ATENDIMENTOS PEDAGÓGICOS");
-        System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
-                ,"------------------------");
+        display.exibirCabecalhoAtendimentoPedagogo();
         List<Pedagogo> pedagogosPorQtidadeAtendimento = new ArrayList<>(pedagogos);
         Collections.sort(pedagogosPorQtidadeAtendimento);
         for (Pedagogo pedagogo:pedagogosPorQtidadeAtendimento) {

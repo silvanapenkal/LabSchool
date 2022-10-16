@@ -2,6 +2,10 @@ package cli;
 
 import exception.OpcaoInvalidaException;
 import model.*;
+import repository.AlunoRepository;
+import repository.PedagogoRepository;
+import repository.ProfessorRepository;
+import util.GeradorDeCodigo;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -47,47 +51,35 @@ public class Display {
         System.out.println();
     }
 
-    public void exibirMenuExperienciaProfessor(){
-        System.out.println();
-        System.out.println("Informe a Experiência do Professor: ");
-        System.out.println("1 - Frontend");
-        System.out.println("2 - Backend");
-        System.out.println("3 - Fullstack");
-    }
-
-    public void exibirMenuSituacaoProfessor() {
-        System.out.println();
-        System.out.println("Informe a Situação do Professor: ");
-        System.out.println("1 - Ativo");
-        System.out.println("2 - Inativo");
-    }
-
-    public void exibirMenuFormacaoProfessor() {
-        System.out.println("Informe a Formação Acadêmica do professor: ");
-        System.out.println("1 - Superior Incompleto");
-        System.out.println("2 - Superior Completo");
-        System.out.println("3 - Mestrado");
-        System.out.println("4 - Doutorado");
-    }
-
-    public void exibirMenuSituacaoMatricula() {
-        System.out.println("Informe a Situação da Matrícula: ");
-        System.out.println("1- Ativo");
-        System.out.println("2- Irregular");
-        System.out.println("3- Atendimento pedagógico");
-        System.out.println("4- Inativo");
-    }
-
-    public void exibirCabecalhoListagemPessoa(){
-        System.out.println();
-        System.out.println("Listagem de Pessoas");
-        System.out.println("-------------------");
-        System.out.printf("%-17s%-40s%-28s%-10s\n","Código","Nome",
-                "CPF", "Função");
+    public Pessoa cadastrar (Operacao operacao) {
+        Scanner scan = new Scanner(System.in);
+        String nome = solicitarNome();
+        Long CPF = solicitarCPF();
+        Long telefone = solicitarTelefone();
+        LocalDate dataNascimento = solicitarDataNascimento();
+        Pessoa pessoa;
+        Long codigo = (long) GeradorDeCodigo.getProximaMatricula();
+        if (operacao == Operacao.CADASTRAR_ALUNO) {
+            SituacaoMatriculaAluno situacaoMatricula = solicitarSituacaoAluno();
+            Double nota = solicitarNotaProcessoSeletivo();
+            int qtdadeAtendimentoPedagogico = 0;
+            pessoa = new Aluno(nome, CPF, telefone, codigo, dataNascimento,
+                    situacaoMatricula, nota, qtdadeAtendimentoPedagogico);
+        } else if (operacao == operacao.CADASTRAR_PROFESSOR) {
+            FormacaoAcademicaProfessor formacaoAcademicaProfessor = solicitarFormacaoProfessor();
+            EstadoProfessor situacaoProfessor = solicitarEstadoProfessor();
+            ExperienciaProfessor experienciaProfessor = solicitarExperienciaProfessor();
+            pessoa = new Professor(nome, CPF, telefone, codigo, dataNascimento, formacaoAcademicaProfessor,
+                    situacaoProfessor, experienciaProfessor);
+        } else {
+            int qtdadeAtendimentoPedagogico = 0;
+            pessoa = new Pedagogo(nome, CPF, telefone, codigo, dataNascimento, qtdadeAtendimentoPedagogico);
+        }
+        return pessoa;
     }
 
     public void exibirOpcoesRelatorioPessoas() {
-        System.out.println("Quais caegorias de pessoas você deseja consultar?");
+        System.out.println("Quais categorias de pessoas você deseja consultar?");
         System.out.println("1 - Alunos");
         System.out.println("2 - Professores");
         System.out.println("3 - Pedagogos");
@@ -102,6 +94,7 @@ public class Display {
         System.out.println("4 - Inativo");
         System.out.println("5 - Todos");
     }
+
 
     public void exibirOpcoesRelatorioProfessor(){
         System.out.println("Quais professores você deseja consultar?");
@@ -196,7 +189,131 @@ public class Display {
         return situacaoMatricula;
     }
 
-    public Pessoa cadastrar (Operacao operacao) {
+    public void exibirCabecalhoAtendimentoAluno(){
+        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO ALUNO","NOME DO ALUNO",
+                "ATENDIMENTOS PEDAGÓGICOS");
+        System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
+                ,"------------------------");
+    }
+
+    public void exibirCabecalhoAtendimentoPedagogo(){
+        System.out.printf("%-17s%-40s%-24s\n","CÓDIGO DO PEDAGOGO","NOME DO PEDAGOGO",
+                "ATENDIMENTOS PEDAGÓGICOS");
+        System.out.printf("%-17s%-40s%-24s\n","---------------","--------------------------------------"
+                ,"------------------------");
+    }
+
+    public void exibirCabecalhoRelatorioAluno (){
+        System.out.printf("%-17s%-40s%-28s%-24s\n","CÓDIGO DO ALUNO","NOME DO ALUNO",
+                "NOTA DO PROCESSO SELETIVO","ATENDIMENTOS PEDAGÓGICOS");
+        System.out.printf("%-17s%-40s%-28s%-24s\n","---------------","--------------------------------------",
+                "--------------------------","------------------------");
+    }
+
+    public void exibirCabecalhoListagemPessoa(){
+        System.out.println();
+        System.out.println("Listagem de Pessoas");
+        System.out.println("-------------------");
+        System.out.printf("%-17s%-40s%-11s   %-23s\n","Código","Nome", "CPF", "Função");
+    }
+
+    public void exibirMensagem(String msg) {
+        System.out.println(msg);
+        voltarParaMenu();
+    }
+
+    private ExperienciaProfessor solicitarExperienciaProfessor(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+        System.out.println("Informe a Experiência do Professor: ");
+        System.out.println("1 - Frontend");
+        System.out.println("2 - Backend");
+        System.out.println("3 - Fullstack");
+        int experiencia = scanner.nextInt();
+        ExperienciaProfessor experienciaProfessor = ExperienciaProfessor.obterPeloCodigo(experiencia);
+        System.out.println();
+        return experienciaProfessor;
+    }
+
+   private EstadoProfessor solicitarEstadoProfessor() {
+        System.out.println();
+        System.out.println("Informe a Situação do Professor: ");
+        System.out.println("1 - Ativo");
+        System.out.println("2 - Inativo");
+       Scanner scanner = new Scanner(System.in);
+       int situacao = scanner.nextInt();
+       EstadoProfessor estadoProfessor = EstadoProfessor.obterPeloCodigo(situacao);
+       return estadoProfessor;
+    }
+
+    private FormacaoAcademicaProfessor solicitarFormacaoProfessor() {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Informe a Formação Acadêmica do professor: ");
+        System.out.println("1 - Superior Incompleto");
+        System.out.println("2 - Superior Completo");
+        System.out.println("3 - Mestrado");
+        System.out.println("4 - Doutorado");
+        int formacao = scanner.nextInt();
+        FormacaoAcademicaProfessor formacaoAcademicaProfessor = FormacaoAcademicaProfessor.obterPeloCodigo(formacao);
+        return  formacaoAcademicaProfessor;
+    }
+
+    private void exibirMenuSituacaoMatricula() {
+        System.out.println("Informe a Situação da Matrícula: ");
+        System.out.println("1- Ativo");
+        System.out.println("2- Irregular");
+        System.out.println("3- Atendimento pedagógico");
+        System.out.println("4- Inativo");
+    }
+
+    private Long solicitarCPF(){
+        Scanner scanner = new Scanner(System.in);
+        Boolean validadeCPF = false;
+        Long CPF = 00000000000l;
+        System.out.println();
+        while (!validadeCPF) {
+            System.out.print("Informe o CPF: ");
+            String entradaCPF = scanner.nextLine();
+            int caracteresCPF = entradaCPF.length();
+            if (caracteresCPF == 11) {
+                try {
+                    CPF = Long.parseLong(entradaCPF);
+                    validadeCPF = true;
+                } catch (Exception e) {
+                    System.out.println("CPF inválido");
+                }
+            } else {
+                System.out.println("CPF inválido");
+            }
+        }
+        return CPF;
+    }
+
+    private Long solicitarTelefone(){
+        Scanner scanner = new Scanner(System.in);
+        System.out.println();
+        Boolean validadeTelefone = false;
+        Long telefone =0000l;
+        while (!validadeTelefone) {
+            System.out.print("Informe o Telefone (digite apenas os números com o prefixo: ");
+            System.out.println("Exemplo: se seu número é (47) 99000-9999, digite 47990009999");
+            String entradaTelefone = scanner.nextLine();
+            int caracteresTelefone = entradaTelefone.length();
+            if (caracteresTelefone == 11) {
+                try {
+                    telefone = Long.parseLong(entradaTelefone);
+                    validadeTelefone = true;
+                } catch (Exception e) {
+                    System.out.println("Telefone inválido");
+                }
+            } else {
+                System.out.println("Telefone inválido");
+            }
+        }
+        return telefone;
+    }
+
+    private String solicitarNome (){
         Scanner scanner = new Scanner(System.in);
         String nome = "";
         System.out.println();
@@ -204,12 +321,11 @@ public class Display {
             System.out.print("Informe o nome: ");
             nome = scanner.nextLine();
         }
-        System.out.println();
-        System.out.print("Informe o CPF (digite apenas os números): ");
-        Long CPF = scanner.nextLong();
-        System.out.println();
-        System.out.print("Informe o Telefone (digite apenas os números): ");
-        Long telefone = scanner.nextLong();
+        return nome;
+    }
+
+    private LocalDate solicitarDataNascimento(){
+        Scanner scanner = new Scanner(System.in);
         System.out.println();
         System.out.print("Data de Nascimento(formato = dd/MM/yyyy): ");
         Scanner scan = new Scanner(System.in);
@@ -217,44 +333,27 @@ public class Display {
         DateTimeFormatter formatador = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         LocalDate dataNascimento = LocalDate.parse(input, formatador);
         System.out.println();
-        Pessoa pessoa;
-        Long codigo = (long) GeradorDeCodigo.getProximaMatricula();
-        if (operacao == Operacao.CADASTRAR_ALUNO) {
-            int qtdadeAtendimentoPedagogico = 0;
-            exibirMenuSituacaoMatricula();
-            int situacao = scan.nextInt();
-            SituacaoMatriculaAluno situacaoMatricula = SituacaoMatriculaAluno.obterPeloCodigo(situacao);
-            System.out.println();
-            Double nota=11d; // Como não aceita null coloquei um valor acima de 10 para entrar no while
-            while (nota<0 || nota>10){
-                System.out.print("Informe a Nota do Processo Seletivo: ");
-                nota = scan.nextDouble();
-            }
-            System.out.println();
-            pessoa = new Aluno(nome, CPF, telefone, codigo, dataNascimento,
-                    situacaoMatricula, nota, qtdadeAtendimentoPedagogico);
-        } else if (operacao == operacao.CADASTRAR_PROFESSOR) {
-            exibirMenuFormacaoProfessor();
-            int formacao = scan.nextInt();
-            FormacaoAcademicaProfessor formacaoAcademicaProfessor = FormacaoAcademicaProfessor.obterPeloCodigo(formacao);
-            exibirMenuSituacaoProfessor();
-            int situacao = scan.nextInt();
-            EstadoProfessor situacaoProfessor = EstadoProfessor.obterPeloCodigo(situacao);
-            exibirMenuExperienciaProfessor ();
-            int experiencia = scan.nextInt();
-            ExperienciaProfessor experienciaProfessor = ExperienciaProfessor.obterPeloCodigo(experiencia);
-            System.out.println();
-            pessoa = new Professor(nome, CPF, telefone, codigo, dataNascimento, formacaoAcademicaProfessor,
-                    situacaoProfessor, experienciaProfessor);
-        } else {
-            int qtdadeAtendimentoPedagogico = 0;
-            pessoa = new Pedagogo(nome, CPF, telefone, codigo, dataNascimento, qtdadeAtendimentoPedagogico);
-        }
-        return pessoa;
+        return dataNascimento;
     }
 
-    public void exibirMensagem(String msg) {
-        System.out.println(msg);
-        voltarParaMenu();
+    private SituacaoMatriculaAluno solicitarSituacaoAluno(){
+        Scanner scanner = new Scanner(System.in);
+        exibirMenuSituacaoMatricula();
+        int situacao = scanner.nextInt();
+        SituacaoMatriculaAluno situacaoMatricula = SituacaoMatriculaAluno.obterPeloCodigo(situacao);
+        System.out.println();
+        return situacaoMatricula;
     }
+
+    private Double solicitarNotaProcessoSeletivo(){
+        Scanner scanner = new Scanner(System.in);
+        Double nota=11d; // Como não aceita null coloquei um valor acima de 10 para entrar no while
+        while (nota<0 || nota>10){
+            System.out.print("Informe a Nota do Processo Seletivo: ");
+            nota = scanner.nextDouble();
+        }
+        System.out.println();
+        return nota;
+    }
+
 }
